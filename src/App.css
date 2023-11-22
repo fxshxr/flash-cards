@@ -36,9 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.container {
+  display: inline-flex;
+}
 
 .card {
-  display: fixed;
   border: 2px solid black;
   border-radius: 20px;
   width: 600px;
@@ -50,4 +52,10 @@
   border-radius: 5px;
   padding: 5px;
   margin: 10px;
+}
+.btn {
+  height: 40px;
+  margin-top: 150px;
+  margin-right: 30px;
+  margin-left: 30px;
 }

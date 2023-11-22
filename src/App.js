@@ -3,24 +3,63 @@ import React, { useState } from "react";
 import CardComponent from "./components/CardComponent";
 
 function App() {
-  const [currentCard, setCurrentCard] = useState(1);
-
+  const [currentCard, setCurrentCard] = useState(2);
+  const [visible, setVisible] = useState(false);
   const questions = [
-    [
-      1,
-      "What song was or do you want to be the your first dance at your wedding?",
-      "3",
-    ],
-    [2, "Where do you picture yourself five years from now?", "4"],
-    [3, "Do you have any siblings?", "sdsd"],
+    {
+      id: 1,
+      question: "some q",
+      answer: "some a",
+    },
+    {
+      id: 2,
+      question: "some q2",
+      answer: "some a2",
+    },
+    {
+      id: 3,
+      question: "some q3",
+      answer: "some a3",
+    },
   ];
+
+  const setCurrentMinus = () => {
+    setCurrentCard(currentCard - 1);
+    setVisible(false);
+  };
+  const setCurrentPlus = () => {
+    setCurrentCard(currentCard + 1);
+    setVisible(false);
+  };
 
   return (
     <div className="App">
-      <CardComponent
-        question={questions[0][1]}
-        answer={questions[0][2]}
-      ></CardComponent>
+      <div className="container">
+        <button
+          className="btn"
+          onClick={() => {
+            currentCard > 0 ? setCurrentMinus() : setCurrentCard(0);
+          }}
+        >
+          <span>&#8592;</span>
+        </button>
+
+        <CardComponent
+          visible={visible}
+          visibleFun={() => setVisible(!visible)}
+          question={questions[currentCard].question}
+          answer={questions[currentCard].answer}
+        ></CardComponent>
+
+        <button
+          className="btn"
+          onClick={() =>
+            currentCard < questions.length - 1 ? setCurrentPlus() : ""
+          }
+        >
+          <span>&#8594;</span>
+        </button>
+      </div>
     </div>
   );
 }
