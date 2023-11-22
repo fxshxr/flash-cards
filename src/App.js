@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import CardComponent from "./components/CardComponent";
 
 function App() {
+  const [currentCard, setCurrentCard] = useState(1);
+
+  const questions = [
+    [
+      1,
+      "What song was or do you want to be the your first dance at your wedding?",
+      "3",
+    ],
+    [2, "Where do you picture yourself five years from now?", "4"],
+    [3, "Do you have any siblings?", "sdsd"],
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CardComponent
+        question={questions[0][1]}
+        answer={questions[0][2]}
+      ></CardComponent>
     </div>
   );
 }
